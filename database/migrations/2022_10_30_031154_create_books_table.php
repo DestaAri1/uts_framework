@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('pengarang');
             $table->integer('year');
             $table->string('id_kategori');
+            $table->integer('id_user');
             $table->timestamps();
         });
     }

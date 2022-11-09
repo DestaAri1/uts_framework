@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\categories;
+use App\Models\User;
 
 class CategoriesController extends Controller
 {
@@ -32,6 +33,7 @@ class CategoriesController extends Controller
             return back()->with('error', 'Kategori Sudah Ada');
         } else {
             $kategori->nama_kategori = $request->nama_kategori;
+            $kategori->id_user = auth()->user()->id;
             $kategori->save();
             return redirect()->back()->with('success', 'Kategori Berhasil Ditambahkan');
         }

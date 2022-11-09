@@ -27,7 +27,6 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $buku = new book();
-        $kategori = categories::all();
         $cek_buku = book::where('judul', $request->judul)->first();
         if ($cek_buku) {
             return back()->with('error', 'Buku telah ada');
@@ -37,6 +36,7 @@ class BookController extends Controller
             $buku->pengarang = $request->pengarang;
             $buku->year = $request->year;
             $buku->id_kategori = $request->kategori;
+            $buku->id_user = auth()->user()->id;
             $buku->save();
             return redirect()->back()->with('success','Data Berhasil Ditambahkan');
         }
@@ -65,7 +65,7 @@ class BookController extends Controller
         $cari = book::findOrFail($id);
         $cek_buku = book::where('judul', $request->judul)->first();
         if ($cek_buku) {
-            return redirect()->route('buku.index')->with('error','Data Gagal di Ubah');
+            return redirect()->route('buku.index')->with('error','Buku Sudah ada');
         } else {
             $input = [
                 'judul' => $request->judul,
