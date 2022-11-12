@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class categories extends Model
+class wishlist extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'id',
-        'nama_kategori',
-        'id_user'
+        'nama_buku',
+        'pengarang',
+        'tgl',
+        'sinopsis',
+        'harga',
+        'user_id'
     ];
-
-    public function book(){
-        return $this->hasMany(book::class);
-    }
 }

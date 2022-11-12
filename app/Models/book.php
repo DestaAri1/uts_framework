@@ -15,7 +15,8 @@ class book extends Model
         'penerbit',
         'pengarang',
         'year',
-        'id_kategori'
+        'id_kategori',
+        'id_user'
     ];
 
     public function kategori(){

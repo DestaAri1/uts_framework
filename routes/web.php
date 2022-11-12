@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoriesController;
-
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +30,7 @@ route::get('/kategori', [CategoriesController::class, 'index']);
 Route::resource('buku', BookController::class);
 
 route::resource('kategori', CategoriesController::class);
+
+Route::resource('wishlist', WishlistController::class);
 
 

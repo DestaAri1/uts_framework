@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\book;
 use App\Models\categories;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -15,7 +16,7 @@ class BookController extends Controller
 
     public function index()
     {
-        $buku = book::paginate(10);
+        $buku = book::where('id_user', Auth::id())->latest()->paginate(5);
         $kategori = categories::all();
         return view('main.buku', compact('buku','kategori'));
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\categories;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -16,7 +16,7 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $kategori = categories::all();
+        $kategori = categories::where('id_user', Auth::id())->latest()->paginate(5);
         return view('main.kategori', compact('kategori'));
     }
 

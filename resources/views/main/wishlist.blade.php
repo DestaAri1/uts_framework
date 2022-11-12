@@ -5,19 +5,19 @@
 @section('konten')
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Buku</h1>
+            <h1 class="h3 mb-0 text-gray-800">Wish List</h1>
         </div>
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h5 mb-0 text-gray-800">
-                <button class="btn btn-success" data-toggle="modal" data-target="#tambah_produk">Tambah Buku</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#tambah_produk">Tambah Wish List</button>
             </h1>
         </div>
 
         <div class="container-fluid">
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Buku</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Wish List</h6>
             </div>
             <div class="card-body">
                 @if ($message = Session::get('error'))
@@ -36,31 +36,30 @@
                             <tr style="text-align: center">
                                 <th width="50px">No</th>
                                 <th>Judul</th>
-                                <th>Penerbit</th>
                                 <th>Pengarang</th>
-                                <th width="80px">Tahun</th>
-                                <th width="115px">Kategori</th>
+                                <th width="150px">Tangga Rilis</th>
+                                <th>Sinopsis</th>
+                                <th width="110">Harga</th>
                                 <th width="100px">&nbsp;</th>
                             </tr>
                         </thead>
 
-                        <tbody>
-                            <?php
+                        <tbody style="text-align: center">
+                            {{-- <?php
                                 $no=1;
                                 ?>
-                            @foreach ($buku as $p)
+                            @foreach ($list as $p)
                             <tr>
                                 <td>{{$no++}}</td>
                                 <td>{{$p->judul}}</td>
-                                <td>{{$p->penerbit}}</td>
                                 <td>{{$p->pengarang}}</td>
                                 <td>{{$p->year}}</td>
                                 <td>{{$p->id_kategori}}</td>
                                 <td>
-                                    <form action="{{route('buku.edit', $p->id)}}" method="GET">
+                                    <form action="{{route('wishlist.edit', $p->id)}}" method="GET">
                                         <button class="btn btn-facebook">Edit</button>
                                     </form>
-                                    <form action="{{route('buku.destroy', $p->id)}}" method="POST">
+                                    <form action="{{route('wishlist.destroy', $p->id)}}" method="POST">
                                         @csrf
                                         {{ method_field('delete') }}
                                         <button name="submit" type="submit" class="btn btn-danger">Hapus</button>
@@ -68,10 +67,10 @@
                                 </td>
                                 </td>
                             </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                     </table>
-                    {{$buku->links()}}
+                    {{$list->links()}}
                 </div>
             </div>
             </div>
@@ -81,39 +80,14 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Buku</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Wish List</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('buku.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="#" method="POST" enctype="multipart/form-data">
                         @csrf
-                                                {{-- <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="contoh1">Nama</label>
-                                <input type="text" class="form-control" id="contoh1" placeholder="Nama">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="contoh2">Username</label>
-                                <input type="text" class="form-control" id="contoh2" placeholder="Username">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="contoh1">Nama Ayah</label>
-                                <input type="text" class="form-control" id="contoh1" placeholder="Nama Ayah">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="contoh2">Pekerjaan Ayah</label>
-                                <input type="text" class="form-control" id="contoh2" placeholder="Pekerjaan Ayah">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="contoh2">Alamat Ayah</label>
-                                <input type="text" class="form-control" id="contoh2" placeholder="Alamat Ayah">
-                            </div>
-                        </div> --}}
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">Judul</label>
@@ -126,31 +100,20 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="">Pilih Kategori</label>
-                                <select class="form-control" name="kategori" id="kategori" required>
-                                    <option value="">...</option>
-                                    @foreach ($kategori as $k)
-                                        <option value="{{$k->nama_kategori}}">{{$k->nama_kategori}}</option>
-                                    @endforeach
-                                </select>
+                            <div class="form-group col-md-6">
+                                <label for="">Tanggal Rilis</label>
+                                <input name="tgl" id="tgl" type="date" class="form-control" placeholder="Masukkan Tanggal" required>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="">Penerbit</label>
-                                <input name="penerbit" id="penerbit" type="text" class="form-control" placeholder="Masukkan Penerbit" required>
+                            <div class="form-group col-md-6">
+                                <label for="">Harga</label>
+                                <input name="harga" id="harga" type="number" class="form-control" placeholder="Masukkan Harga" required>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="">Tahun</label>
-                                <input name="year" id="year" type="number" class="form-control" placeholder="Masukkan Tahun" required>
-                            </div>
-
                         </div>
 
                         <div class="form-group">
-                            <label for="">Sinopsis / Deskripsi</label>
-                            <textarea name="sinopsis" id="sinopsis" cols="30" rows="10" class="form-control" required placeholder="Masukkan Sinopsis/Deskripsi"></textarea>
+                            <label for="">Sinopsis</label>
+                            <textarea name="sinopsis" id="sinopsis" class="form-control" placeholder="Masukkan Sinopsis" requiredcols="30" rows="10"></textarea>
                         </div>
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
