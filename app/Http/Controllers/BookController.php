@@ -36,7 +36,8 @@ class BookController extends Controller
             $buku->penerbit = $request->penerbit;
             $buku->pengarang = $request->pengarang;
             $buku->year = $request->year;
-            $buku->id_kategori = $request->kategori;
+            $buku->id_kategori = $request->id_kategori;
+            $buku->sinopsis = $request->sinopsis;
             $buku->id_user = auth()->user()->id;
             $buku->save();
             return redirect()->back()->with('success','Data Berhasil Ditambahkan');
@@ -60,6 +61,7 @@ class BookController extends Controller
             'penerbit' => 'required',
             'pengarang' => 'required',
             'year' => 'required',
+            'sinopsis' => 'required',
             'id_kategori' => 'required'
         ]);
 
@@ -73,7 +75,8 @@ class BookController extends Controller
                 'penerbit' => $request->penerbit,
                 'pengarang' => $request->pengarang,
                 'year' => $request->year,
-                'id_kategori' => $request->id_kategori
+                'id_kategori' => $request->id_kategori,
+                'sinopsis' => $request->sinopsis
             ];
             $cari->update($input);
             return redirect()->route('buku.index')->with('success', 'Data Berhasil di Ubah');

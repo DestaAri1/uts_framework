@@ -37,15 +37,15 @@
                                 <th width="50px">No</th>
                                 <th>Judul</th>
                                 <th>Pengarang</th>
-                                <th width="150px">Tangga Rilis</th>
+                                <th width="120px">Tangga Rilis</th>
                                 <th>Sinopsis</th>
-                                <th width="110">Harga</th>
+                                <th width="130">Harga</th>
                                 <th width="100px">&nbsp;</th>
                             </tr>
                         </thead>
 
-                        <tbody style="text-align: center">
-                            {{-- <?php
+                        <tbody>
+                            <?php
                                 $no=1;
                                 ?>
                             @foreach ($list as $p)
@@ -53,8 +53,9 @@
                                 <td>{{$no++}}</td>
                                 <td>{{$p->judul}}</td>
                                 <td>{{$p->pengarang}}</td>
-                                <td>{{$p->year}}</td>
-                                <td>{{$p->id_kategori}}</td>
+                                <td>{{$p->tgl}}</td>
+                                <td>{{$p->sinopsis}}</td>
+                                <td>Rp. {{$p->harga}}</td>
                                 <td>
                                     <form action="{{route('wishlist.edit', $p->id)}}" method="GET">
                                         <button class="btn btn-facebook">Edit</button>
@@ -67,7 +68,7 @@
                                 </td>
                                 </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                     {{$list->links()}}

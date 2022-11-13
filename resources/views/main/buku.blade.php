@@ -89,31 +89,6 @@
                 <div class="modal-body">
                     <form action="{{route('buku.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                                                {{-- <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="contoh1">Nama</label>
-                                <input type="text" class="form-control" id="contoh1" placeholder="Nama">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="contoh2">Username</label>
-                                <input type="text" class="form-control" id="contoh2" placeholder="Username">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="contoh1">Nama Ayah</label>
-                                <input type="text" class="form-control" id="contoh1" placeholder="Nama Ayah">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="contoh2">Pekerjaan Ayah</label>
-                                <input type="text" class="form-control" id="contoh2" placeholder="Pekerjaan Ayah">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="contoh2">Alamat Ayah</label>
-                                <input type="text" class="form-control" id="contoh2" placeholder="Alamat Ayah">
-                            </div>
-                        </div> --}}
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">Judul</label>
@@ -128,8 +103,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="">Pilih Kategori</label>
-                                <select class="form-control" name="kategori" id="kategori" required>
-                                    <option value="">...</option>
+                                <select class="form-control" name="id_kategori" id="id_kategori" required>
+                                    <option value="" >...</option>
                                     @foreach ($kategori as $k)
                                         <option value="{{$k->nama_kategori}}">{{$k->nama_kategori}}</option>
                                     @endforeach

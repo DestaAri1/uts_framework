@@ -10,7 +10,7 @@ class wishlist extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_buku',
+        'judul',
         'pengarang',
         'tgl',
         'sinopsis',
