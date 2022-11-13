@@ -67,49 +67,6 @@
             </div>
         </div>
     </div>
-{{--
-    <div class="col-lg-6 mb-4">
 
-        <!-- Illustrations -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Baru</h6>
-            </div>
-            <div class="card-body">
-                <form action="{{ route('buku.update', $buku->id) }}" method="POST">
-                    @csrf
-                    {{method_field('PATCH')}}
-                    <div class="form-group">
-                        <label for="">Judul</label>
-                        <input id="judul" name="judul" type="text" class="form-control" placeholder="Masukkan Judul" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="">Penerbit</label>
-                        <input id="penerbit" name="penerbit" type="text" class="form-control" placeholder="Masukkan Penerbit" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="">Pengarang</label>
-                        <input id="pengarang" name="pengarang" type="text" class="form-control" placeholder="Masukkan Pengarang" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="">Tahun</label>
-                        <input id="year" name="year" type="number" class="form-control"placeholder="Masukkan Tahun" required>
-                      </div>
-                      <div class="">
-                        <label for="">Pilih Kategori</label>
-                        <select class="form-control" name="id_kategori" id="id_kategori" required>
-                            <option value="">...</option>
-                            @foreach ($kategori as $k)
-                                <option value="{{$k->nama_kategori}}">{{$k->nama_kategori}}</option>
-                                <input type="hidden" name="id" id="id" value="{{$k->id}}">
-                            @endforeach
-                        </select>
-                    </div>
-                    <br>
-                      <button type="submit" class="btn btn-success">Simpan</button>
-                </form>
-            </div>
-         </div>
-    </div> --}}
 </div>
 @endsection
