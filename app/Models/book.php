@@ -15,6 +15,7 @@ class book extends Model
         'penerbit',
         'pengarang',
         'year',
+        'sinopsis',
         'id_kategori',
         'id_user'
     ];

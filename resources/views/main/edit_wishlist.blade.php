@@ -29,7 +29,7 @@
             <div class="card-body">
                 <form action="{{ route('wishlist.update', $list->id) }}" method="POST">
                     @csrf
-                    {{-- {{method_field('PATCH')}} --}}
+                    
                     @method('PATCH')
                     <div class="form-row">
                         <div class="form-group col-md-6">

@@ -38,6 +38,7 @@
                                 <th>Judul</th>
                                 <th>Penerbit</th>
                                 <th>Pengarang</th>
+                                <th width="350px">Sinopsis</th>
                                 <th width="80px">Tahun</th>
                                 <th width="115px">Kategori</th>
                                 <th width="100px">&nbsp;</th>
@@ -54,6 +55,7 @@
                                 <td>{{$p->judul}}</td>
                                 <td>{{$p->penerbit}}</td>
                                 <td>{{$p->pengarang}}</td>
+                                <td>{{$p->sinopsis}}</td>
                                 <td>{{$p->year}}</td>
                                 <td>{{$p->id_kategori}}</td>
                                 <td>
