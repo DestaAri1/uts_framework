@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WishlistController;
 
 /*
@@ -17,11 +18,15 @@ use App\Http\Controllers\WishlistController;
 |
 */
 
+Route::get('/', function(){
+    return view('home.home');
+});
+
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index']);
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/book', [BookController::class, 'index']);
 
